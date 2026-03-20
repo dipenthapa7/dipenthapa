@@ -61,9 +61,9 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             data-testid="navbar-logo"
           >
-            <span className="text-xl md:text-2xl font-heading font-bold text-cyan-400">
-              {PERSONAL_INFO.name.split(' ')[0]}
-              <span className="text-violet-400">.AI</span>
+            <span className="text-xl md:text-2xl font-heading font-bold">
+              <span className="text-cyan-400">Dipen</span>
+              <span className="text-slate-100"> Thapa</span>
             </span>
           </motion.a>
 

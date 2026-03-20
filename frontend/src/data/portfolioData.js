@@ -23,9 +23,9 @@ export const PERSONAL_INFO = {
 
 // About Section
 export const ABOUT_DATA = {
-  description: `I'm a passionate AI/ML student from Bhaktapur, Nepal, currently building my programming foundation through consistent daily practice. My focus is on developing practical skills in Python, machine learning, and data science while maintaining clean, well-documented code.`,
+  description: `I'm a BIT student from Bhaktapur, Nepal with a growing interest in Python, AI/ML, and practical project-based learning. I enjoy building simple, useful projects while improving my technical skills and exploring new technologies step by step. Currently focused on strengthening my programming foundation and growing as a future tech professional.`,
   highlights: [
-    "Currently learning Python fundamentals and ML basics",
+    "BIT student exploring Python and AI/ML",
     "Focused on practical project-based learning",
     "Building skills through consistent daily practice",
     "Open to internships and collaborative projects",

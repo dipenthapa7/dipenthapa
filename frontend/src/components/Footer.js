@@ -34,8 +34,8 @@ const Footer = () => {
             className="text-2xl font-heading font-bold mb-6"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="text-cyan-400">{PERSONAL_INFO.name.split(' ')[0]}</span>
-            <span className="text-violet-400">.AI</span>
+            <span className="text-cyan-400">Dipen</span>
+            <span className="text-slate-100"> Thapa</span>
           </motion.a>
 
           {/* Navigation Links */}

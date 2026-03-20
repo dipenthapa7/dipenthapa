@@ -100,7 +100,7 @@ const About = () => {
                   </div>
                   <span className="text-sm text-slate-500">Education</span>
                 </div>
-                <p className="text-slate-200 font-medium">Computer Science Student</p>
+                <p className="text-slate-200 font-medium">BIT Student</p>
               </motion.div>
 
               <motion.div
