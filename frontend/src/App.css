@@ -6,6 +6,13 @@
     min-height: 100vh;
 }
 
+/* Hide Emergent badge */
+#emergent-badge {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 /* Smooth scrolling for the entire page */
 html {
     scroll-behavior: smooth;
