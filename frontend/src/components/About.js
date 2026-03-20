@@ -12,156 +12,130 @@ const About = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+      transition: { staggerChildren: 0.15 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const infoCards = [
+    { icon: MapPin, label: 'Location', value: PERSONAL_INFO.location, color: 'cyan' },
+    { icon: BookOpen, label: 'Education', value: 'BIT Student', color: 'violet' },
+    { icon: Target, label: 'Focus', value: 'AI/ML & Data Science', color: 'emerald' },
+    { icon: Users, label: 'Status', value: 'Open to Collaborate', color: 'amber' },
+  ];
+
+  const colorMap = {
+    cyan: { bg: 'bg-cyan-500/[0.08]', text: 'text-cyan-400' },
+    violet: { bg: 'bg-violet-500/[0.08]', text: 'text-violet-400' },
+    emerald: { bg: 'bg-emerald-500/[0.08]', text: 'text-emerald-400' },
+    amber: { bg: 'bg-amber-500/[0.08]', text: 'text-amber-400' },
   };
 
   return (
     <section
       id="about"
       ref={ref}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-28 md:py-36 overflow-hidden"
       data-testid="about-section"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-void via-surface/50 to-void" />
+      {/* Clean Background */}
+      <div className="absolute inset-0 bg-void" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12"
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <span className="text-cyan-400 font-mono text-sm uppercase tracking-widest">
+          <span className="text-cyan-400 font-mono text-xs uppercase tracking-[0.2em]">
             Get to know me
           </span>
-          <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-slate-100">
-            About <span className="text-cyan-400">Me</span>
+          <h2 className="mt-4 text-3xl md:text-4xl font-heading font-bold text-slate-50">
+            About Me
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Main Content */}
-          <motion.div variants={itemVariants} className="lg:col-span-3 space-y-6">
-            <div className="p-6 md:p-8 rounded-2xl bg-surface/50 backdrop-blur-sm border border-white/5">
-              <p className="text-lg text-slate-300 leading-relaxed">
+          <motion.div variants={itemVariants} className="lg:col-span-7">
+            {/* Bio Card */}
+            <div className="p-8 rounded-2xl bg-surface/40 border border-white/[0.06] mb-6">
+              <p className="text-slate-300 text-base leading-[1.8] mb-8">
                 {ABOUT_DATA.description}
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="space-y-3">
                 {ABOUT_DATA.highlights.map((highlight, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -10 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                    className="flex items-start gap-3"
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                    className="flex items-center gap-3"
                   >
-                    <div className="mt-1 w-2 h-2 rounded-full bg-cyan-400 flex-shrink-0" />
-                    <span className="text-slate-400">{highlight}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
+                    <span className="text-slate-400 text-sm">{highlight}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Info Cards */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, borderColor: 'rgba(6, 182, 212, 0.5)' }}
-                className="p-5 rounded-xl bg-surface/50 backdrop-blur-sm border border-white/5 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-cyan-500/10">
-                    <MapPin className="w-5 h-5 text-cyan-400" />
+            {/* Info Cards Grid */}
+            <div className="grid sm:grid-cols-2 gap-3">
+              {infoCards.map((card, index) => (
+                <motion.div
+                  key={card.label}
+                  variants={itemVariants}
+                  whileHover={{ y: -2, borderColor: 'rgba(255,255,255,0.12)' }}
+                  className="p-5 rounded-xl bg-surface/30 border border-white/[0.04] transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={`p-2 rounded-lg ${colorMap[card.color].bg}`}>
+                      <card.icon className={`w-4 h-4 ${colorMap[card.color].text}`} />
+                    </div>
+                    <span className="text-xs text-slate-500 uppercase tracking-wider">{card.label}</span>
                   </div>
-                  <span className="text-sm text-slate-500">Location</span>
-                </div>
-                <p className="text-slate-200 font-medium">{PERSONAL_INFO.location}</p>
-              </motion.div>
-
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, borderColor: 'rgba(6, 182, 212, 0.5)' }}
-                className="p-5 rounded-xl bg-surface/50 backdrop-blur-sm border border-white/5 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-violet-500/10">
-                    <BookOpen className="w-5 h-5 text-violet-400" />
-                  </div>
-                  <span className="text-sm text-slate-500">Education</span>
-                </div>
-                <p className="text-slate-200 font-medium">BIT Student</p>
-              </motion.div>
-
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, borderColor: 'rgba(6, 182, 212, 0.5)' }}
-                className="p-5 rounded-xl bg-surface/50 backdrop-blur-sm border border-white/5 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-emerald-500/10">
-                    <Target className="w-5 h-5 text-emerald-400" />
-                  </div>
-                  <span className="text-sm text-slate-500">Focus</span>
-                </div>
-                <p className="text-slate-200 font-medium">AI/ML & Data Science</p>
-              </motion.div>
-
-              <motion.div
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, borderColor: 'rgba(6, 182, 212, 0.5)' }}
-                className="p-5 rounded-xl bg-surface/50 backdrop-blur-sm border border-white/5 transition-all duration-300"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-orange-500/10">
-                    <Users className="w-5 h-5 text-orange-400" />
-                  </div>
-                  <span className="text-sm text-slate-500">Status</span>
-                </div>
-                <p className="text-slate-200 font-medium">Open to Collaborate</p>
-              </motion.div>
+                  <p className="text-slate-200 font-medium text-sm pl-11">{card.value}</p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Stats Cards */}
-          <motion.div variants={itemVariants} className="lg:col-span-2 space-y-4">
+          {/* Stats Sidebar */}
+          <motion.div variants={itemVariants} className="lg:col-span-5 space-y-4">
             {ABOUT_DATA.stats.map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.4 + index * 0.15 }}
-                whileHover={{ scale: 1.03, boxShadow: '0 0 40px rgba(6, 182, 212, 0.15)' }}
-                className="p-6 rounded-2xl bg-gradient-to-br from-surface to-surface-highlight border border-white/5 transition-all duration-300"
+                transition={{ delay: 0.5 + index * 0.1 }}
+                whileHover={{ y: -2 }}
+                className="p-6 rounded-2xl bg-surface/40 border border-white/[0.06] transition-all duration-300"
               >
-                <div className="text-4xl md:text-5xl font-heading font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+                <div className="text-4xl font-heading font-bold text-cyan-400 mb-1">
                   {stat.value}
                 </div>
-                <div className="mt-2 text-slate-400 font-medium">{stat.label}</div>
+                <div className="text-slate-500 text-sm font-medium">{stat.label}</div>
               </motion.div>
             ))}
 
-            {/* Additional Card */}
+            {/* Quote Card */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.7 }}
-              className="p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-violet-500/10 border border-cyan-500/20"
+              transition={{ delay: 0.8 }}
+              className="p-6 rounded-2xl bg-gradient-to-br from-cyan-500/[0.06] to-violet-500/[0.04] border border-cyan-500/[0.1]"
             >
-              <p className="text-sm text-slate-400 leading-relaxed">
-                "Building the future through code, one commit at a time. Passionate about transforming ideas into intelligent solutions."
+              <p className="text-slate-400 text-sm leading-relaxed italic">
+                "Building the future through code, one commit at a time."
               </p>
-              <p className="mt-4 text-cyan-400 font-medium">— {PERSONAL_INFO.name}</p>
+              <p className="mt-3 text-cyan-400 text-sm font-medium">— {PERSONAL_INFO.name}</p>
             </motion.div>
           </motion.div>
         </div>

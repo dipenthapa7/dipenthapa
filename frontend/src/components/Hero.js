@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Download, Github, Linkedin, Mail, MapPin, Sparkles } from 'lucide-react';
+import { Download, Github, Linkedin, Mail, MapPin, ArrowRight } from 'lucide-react';
 import { PERSONAL_INFO, PROFILE_IMAGE } from '../data/portfolioData';
 
 const Hero = () => {
@@ -20,33 +20,29 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-12"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
       data-testid="hero-section"
     >
-      {/* Background Effects */}
+      {/* Clean Background */}
       <div className="absolute inset-0 bg-void" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(6,182,212,0.08)_0%,transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(124,58,237,0.06)_0%,transparent_40%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(6,182,212,0.04)_0%,transparent_50%)]" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-32 lg:py-40">
+        <div className="grid lg:grid-cols-5 gap-16 lg:gap-20 items-center">
           
-          {/* Left Side - Profile Image */}
+          {/* Left Side - Profile Image (2 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="flex justify-center lg:justify-start order-1"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-2 flex justify-center lg:justify-start order-1"
           >
             <div className="relative">
-              {/* Subtle Glow */}
-              <div className="absolute -inset-3 bg-gradient-to-br from-cyan-500/20 to-violet-500/10 rounded-3xl blur-2xl opacity-60" />
-              
-              {/* Image Container */}
+              {/* Clean Image Container */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[360px] lg:h-[360px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.4 }}
+                className="relative w-64 h-80 sm:w-72 sm:h-[360px] lg:w-80 lg:h-[400px] rounded-2xl overflow-hidden bg-surface border border-white/[0.08]"
               >
                 <img
                   src={PROFILE_IMAGE}
@@ -56,151 +52,132 @@ const Hero = () => {
                 />
               </motion.div>
 
-              {/* Location Badge */}
+              {/* Location Badge - Minimal */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                className="absolute -bottom-3 -right-3 px-4 py-2 bg-surface/95 backdrop-blur-sm rounded-xl border border-white/10 shadow-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:-right-4 px-4 py-2.5 bg-surface border border-white/[0.08] rounded-xl"
               >
                 <div className="flex items-center gap-2 text-sm">
                   <MapPin size={14} className="text-cyan-400" />
-                  <span className="text-slate-300 font-medium">{PERSONAL_INFO.location}</span>
+                  <span className="text-slate-300">{PERSONAL_INFO.location}</span>
                 </div>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Right Side - Content */}
+          {/* Right Side - Content (3 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-center lg:text-left order-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="lg:col-span-3 text-center lg:text-left order-2"
           >
             {/* Status Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/[0.08] border border-emerald-500/20 mb-8"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-sm font-medium text-emerald-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span className="text-sm font-medium text-emerald-400 tracking-wide">
                 Open to opportunities
               </span>
             </motion.div>
 
-            {/* Greeting */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-lg text-slate-400 mb-2"
-            >
-              Hi, I'm
-            </motion.p>
-
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
+            {/* Name & Title */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold tracking-tight mb-3"
+              className="mb-6"
             >
-              <span className="text-slate-100">{PERSONAL_INFO.name}</span>
-            </motion.h1>
-
-            {/* Title */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-xl text-cyan-400 font-medium mb-6"
-            >
-              {PERSONAL_INFO.title} • BIT Student
-            </motion.p>
+              <p className="text-slate-500 text-base mb-2 tracking-wide">Hi, I'm</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-heading font-bold text-slate-50 tracking-tight leading-tight mb-3">
+                {PERSONAL_INFO.name}
+              </h1>
+              <p className="text-lg sm:text-xl text-cyan-400 font-medium">
+                {PERSONAL_INFO.title} · BIT Student
+              </p>
+            </motion.div>
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="text-base sm:text-lg text-slate-400 leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="text-slate-400 text-base sm:text-[17px] leading-relaxed max-w-md mx-auto lg:mx-0 mb-10"
             >
-              A BIT student with a growing interest in Python, AI/ML, and practical project-based learning. 
-              I enjoy building simple, useful projects while improving my technical skills and exploring 
-              new technologies step by step.
+              A BIT student with a growing interest in Python, AI/ML, and practical 
+              project-based learning. I enjoy building simple, useful projects while 
+              exploring new technologies step by step.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10"
             >
               <motion.button
                 onClick={scrollToProjects}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-void font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group px-6 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-void font-semibold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
                 data-testid="hero-view-projects-btn"
               >
-                <Sparkles size={18} />
                 View Projects
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </motion.button>
 
               <motion.a
                 href={PERSONAL_INFO.resumeUrl}
                 download
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-7 py-3.5 bg-white/5 border border-white/15 text-slate-200 font-semibold rounded-xl hover:bg-white/10 hover:border-white/25 transition-all duration-300 flex items-center justify-center gap-2"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3.5 bg-transparent border border-white/[0.12] text-slate-200 font-semibold rounded-xl hover:bg-white/[0.04] hover:border-white/20 transition-all duration-300 flex items-center justify-center gap-2"
                 data-testid="hero-download-cv-btn"
               >
-                <Download size={18} />
+                <Download size={16} />
                 Download CV
               </motion.a>
             </motion.div>
 
             {/* Social Links */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 }}
-              className="flex gap-3 justify-center lg:justify-start"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="flex gap-2 justify-center lg:justify-start"
             >
-              <motion.a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all duration-300"
-                data-testid="hero-github-link"
-                aria-label="GitHub"
-              >
-                <Github size={20} />
-              </motion.a>
-              <motion.a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all duration-300"
-                data-testid="hero-linkedin-link"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} />
-              </motion.a>
+              {[
+                { icon: Github, href: PERSONAL_INFO.github, label: 'GitHub', testId: 'hero-github-link' },
+                { icon: Linkedin, href: PERSONAL_INFO.linkedin, label: 'LinkedIn', testId: 'hero-linkedin-link' },
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-slate-500 hover:text-cyan-400 hover:border-white/[0.12] transition-all duration-300"
+                  data-testid={social.testId}
+                  aria-label={social.label}
+                >
+                  <social.icon size={18} />
+                </motion.a>
+              ))}
               <motion.button
                 onClick={scrollToContact}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all duration-300"
+                whileHover={{ y: -2 }}
+                className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-slate-500 hover:text-cyan-400 hover:border-white/[0.12] transition-all duration-300"
                 data-testid="hero-email-link"
                 aria-label="Email"
               >
-                <Mail size={20} />
+                <Mail size={18} />
               </motion.button>
             </motion.div>
           </motion.div>
