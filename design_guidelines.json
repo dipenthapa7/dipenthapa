@@ -1,0 +1,108 @@
+{
+  "project_metadata": {
+    "name": "Dipen Thapa - AI/ML Portfolio",
+    "persona": "E1 - Anti-AI Designer",
+    "theme": "dark",
+    "vibe": "Futuristic, High-Precision, Data-Driven, Neon-Noir"
+  },
+  "design_system": {
+    "colors": {
+      "background": "#020617",
+      "surface": "#0f172a",
+      "surface_highlight": "#1e293b",
+      "primary": "#06b6d4",
+      "primary_glow": "0 0 20px rgba(6, 182, 212, 0.5)",
+      "secondary": "#7c3aed",
+      "text_primary": "#f8fafc",
+      "text_secondary": "#94a3b8",
+      "accent_success": "#10b981",
+      "border_subtle": "rgba(255,255,255,0.08)"
+    },
+    "typography": {
+      "heading_font": "Outfit, sans-serif",
+      "body_font": "Plus Jakarta Sans, sans-serif",
+      "code_font": "JetBrains Mono, monospace",
+      "scale": {
+        "h1": "text-5xl md:text-7xl font-bold tracking-tight",
+        "h2": "text-3xl md:text-4xl font-semibold tracking-tight",
+        "nav": "text-sm font-medium tracking-wide uppercase"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-12 lg:p-24",
+      "section_gap": "gap-12 md:gap-24",
+      "component_gap": "gap-4 md:gap-8"
+    },
+    "effects": {
+      "glassmorphism": "bg-slate-950/50 backdrop-blur-xl border border-white/10 shadow-2xl",
+      "neon_border": "border border-cyan-500/20 hover:border-cyan-500/50 transition-colors duration-300",
+      "card_hover": "hover:-translate-y-1 hover:shadow-[0_0_30px_-5px_rgba(6,182,212,0.15)] transition-all duration-300"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_profile": "https://images.unsplash.com/photo-1565023629598-385c80373b3e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzZ8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBtYW4lMjBwb3J0cmFpdCUyMGRhcmslMjBiYWNrZ3JvdW5kJTIwYWJzdHJhY3QlMjBuZXVyYWwlMjBuZXR3b3JrJTIwZGFyayUyMGNvZGluZyUyMGxhcHRvcCUyMHNjcmVlbiUyMGRhcmt8ZW58MHx8fHwxNzc0MDExNDEzfDA&ixlib=rb-4.1.0&q=85",
+      "project_1": "https://images.pexels.com/photos/5496464/pexels-photo-5496464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "project_2": "https://images.pexels.com/photos/5935785/pexels-photo-5935785.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "background_texture": "Use CSS radial gradients (radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 50%))"
+    },
+    "icons": {
+      "library": "lucide-react",
+      "preferred": ["Brain", "Cpu", "Network", "Code", "Terminal", "Github", "Linkedin", "Mail", "Download", "ExternalLink"]
+    }
+  },
+  "layout_strategy": {
+    "type": "Bento Grid + Asymmetry",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "grid_rules": "Use grid-cols-1 md:grid-cols-12 for complex sections. Allow items to span 4, 6, or 8 columns to create rhythm."
+  },
+  "components_registry": [
+    {
+      "name": "Navbar",
+      "path": "src/components/Navbar.js",
+      "description": "Floating glassmorphic nav. Left: 'Dipen.AI' (Logo). Right: Links (Home, About, Skills, Projects, Contact). Mobile: Hamburger menu.",
+      "props": ["smooth-scroll"]
+    },
+    {
+      "name": "Hero",
+      "path": "src/components/Hero.js",
+      "description": "High impact. Left: H1 'Architecting Intelligence'. Sub: 'Dipen Thapa | AI/ML Student'. CTA: 'View Projects' (Primary), 'Download CV' (Outline). Right: Profile image with glitch effect or glowing border.",
+      "animation": "Staggered text reveal. Image fade-in."
+    },
+    {
+      "name": "TechStack",
+      "path": "src/components/TechStack.js",
+      "description": "Marquee or Grid of skills. Categories: Languages (Python, C++), AI/ML (PyTorch, TensorFlow), Web (React, Tailwind).",
+      "style": "Minimalist pills or icon grid with hover glow."
+    },
+    {
+      "name": "ProjectCard",
+      "path": "src/components/ProjectCard.js",
+      "description": "Bento style card. Image top (aspect-video). Content bottom. Title, Desc, Tech Stack (Badges), Links (GitHub, Live).",
+      "interaction": "Hover: Image scales slightly, border glows cyan."
+    },
+    {
+      "name": "ContactForm",
+      "path": "src/components/ContactForm.js",
+      "description": "Clean form. Fields: Name, Email, Message. Integration: EmailJS. validation: Required fields.",
+      "style": "Inputs with transparent bg, bottom border only (or minimal outline). Focus: Border becomes Cyan."
+    }
+  ],
+  "universal_guidelines": [
+    "DO NOT use gradients for text unless it's the main H1.",
+    "DO NOT use pure black (#000000) for cards. Use #0f172a or #172554 (very dark blue).",
+    "ENSURE all interactive elements have `data-testid` attributes (e.g., `data-testid='hero-cta'`).",
+    "Use `framer-motion` for all entrance animations (initial={{opacity:0, y:20}} animate={{opacity:1, y:0}}).",
+    "Mobile Responsiveness: Stack everything on mobile. Touch targets > 44px.",
+    "EmailJS: Use placeholder Service ID/Template ID if not provided, but set up the logic.",
+    "Resume Download: Create a dummy function or link to a placeholder /resume.pdf."
+  ],
+  "instructions_to_main_agent": [
+    "1. INSTALL dependencies: `framer-motion`, `emailjs-com` (or `@emailjs/browser`).",
+    "2. CONFIGURE Tailwind: Add the colors and fonts from Design System to `tailwind.config.js`. Extend the theme.",
+    "3. OVERHAUL `App.js`: Create the single-page layout with sections IDs for scrolling.",
+    "4. IMPLEMENT Components: Build them strictly according to the 'components_registry'.",
+    "5. VERIFY Contrast: Ensure text is readable on dark backgrounds.",
+    "6. ADD `data-testid` to buttons, inputs, and links."
+  ]
+}
