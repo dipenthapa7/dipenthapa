@@ -210,9 +210,8 @@ export const NAV_LINKS = [
 ];
 
 // EmailJS Configuration
-// Sign up at https://www.emailjs.com/ and get your credentials
 export const EMAILJS_CONFIG = {
-  serviceId: "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-  templateId: "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
-  publicKey: "YOUR_PUBLIC_KEY", // Replace with your EmailJS public key
+  serviceId: "dipen_thapa7",
+  templateId: "template_uql1kx7",
+  publicKey: "GYppk2-MnjNkta6AA",
 };
